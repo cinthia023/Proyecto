@@ -26,7 +26,7 @@ class MantenimientoController extends Controller
      */
     public function create()
     {
-        return view("create");
+        return view("create2");
         //
     }
 
@@ -65,7 +65,7 @@ class MantenimientoController extends Controller
     public function show($id)
     {
         $mantenimientos=Mantenimiento::find($id);
-        return view('show1',compact('mantenimientos'));
+        return view('show2',compact('mantenimientos'));
     }
 
     /**
@@ -77,7 +77,7 @@ class MantenimientoController extends Controller
     public function edit($id)
     {
         $mantenimientos = Discount::find($id);
-        return view("editcucharon",compact("reparacions"));
+        return view("edit2",compact("mantenimientos"));
     }
 
     /**

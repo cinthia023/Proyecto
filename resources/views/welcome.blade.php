@@ -12,8 +12,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color:   #e3342f;
+                color:  #fff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -46,6 +46,7 @@
 
             .title {
                 font-size: 84px;
+
             }
 
             .links > a {
@@ -83,6 +84,7 @@
                 <div class="title m-b-md">
                     Sistema RS
                 </div>
+                <img sec="C:\Users\cinthia\Pictures\Screenshots\rs.png" cass="mb-2 redondeado img-fluid">
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
@@ -94,6 +96,7 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
             </div>
         </div>
     </body>

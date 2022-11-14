@@ -27,7 +27,7 @@ class ReparacionController extends Controller
      */
     public function create()
     {
-        return view("create");
+        return view("create1");
     }
 
     /**
@@ -68,7 +68,7 @@ class ReparacionController extends Controller
     public function show($id)
     {
         $reparacions=Reparacion::find($id);
-        return view('show',compact('reparacions'));
+        return view('show1',compact('reparacions'));
         //
     }
 
@@ -83,7 +83,7 @@ class ReparacionController extends Controller
         //return view('edit',compact('cucharons'));
         //
         $reparacions = Reparacion::find($id);
-        return view("editcucharon",compact("reparacions"));
+        return view("edit1",compact("reparacions"));
     }
 
     /**

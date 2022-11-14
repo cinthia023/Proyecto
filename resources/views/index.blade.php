@@ -2,6 +2,7 @@
 @section('title', 'Cucharon')
 @section('content')
 @csrf
+<div class="container text"
     <p>Cucharones</p>
     <div class="row">
 @foreach ($cucharons as $cucharons)
@@ -26,6 +27,7 @@ src="images/{{$cucharons->entrada_cucharon}}" alt="">
 </div>
 </div>
 @endforeach
+</div>
 </div>
 @endsection
 

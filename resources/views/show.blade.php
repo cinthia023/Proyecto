@@ -9,5 +9,7 @@ src="/images/{{$cucharons->entrada_cucharon}}" alt="">
 <div class="text-center">
     <a href="/delete/{{$cucharons->id}}" class="btn btn-primary">Delete</a>
     <a href="/cucharons/{{$cucharons->id}}/edit" class="btn btn-secondary">Editar</a>
+   <a href="{{route('listado.pdf')}}"class="btn btn-sm btn-secondary">
+                Descargar entrenadores en pd
   </div>
 @endsection
