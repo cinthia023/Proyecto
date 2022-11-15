@@ -49,3 +49,4 @@ Route::resource("/mantenimiento","MantenimientoController");
 
 Route::get('delete/{id}','ReparacionController@destroy');
 Route::get('delete/{id}','MantenimientoController@destroy');
+Route::get('descargar-cucharones', 'CucharonController@pdf')->name('listado1.pdf');

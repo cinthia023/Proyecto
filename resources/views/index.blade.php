@@ -23,6 +23,7 @@ src="images/{{$cucharons->entrada_cucharon}}" alt="">
 
     <a href="/delete/{{$cucharons->id}}" class="btn btn-primary">Delete</a>
     <a href="/cucharon/{{$cucharons->id}}" class="btn btn-secondary">Mostrar</a>
+
   </div>
 </div>
 </div>

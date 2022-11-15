@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use PDF;
 use App\Cucharon;
+
 
 class CucharonController extends Controller
 {
@@ -18,6 +20,13 @@ class CucharonController extends Controller
         $cucharons=Cucharon::all();
         return view( "index",compact("cucharons"));
         //
+
+    }
+    public function pdf()
+    {
+        $cucharons=Cucharon::all();
+        $pdf =PDF::loadView('pdf.listado1',compact('cucharons'));
+        return $pdf->download('listado1.pdf');
     }
 
     /**
