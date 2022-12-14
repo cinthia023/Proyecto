@@ -15,7 +15,7 @@
 
         </thead>
         <tbody>
-            @foreach($cucharons as $cucharon)
+            @foreach($cucharons as $cucharons)
             <tr>
                 <td>{{$cucharons->numero}}</td>
                 <td>{{$cucharons->compania}}</td>

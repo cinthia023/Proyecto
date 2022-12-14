@@ -2,8 +2,13 @@
 @section('title', 'Cucharon')
 @section('content')
 @csrf
+
 <div class="container text"
-    <p>Cucharones</p>
+<p>Cucharones</p>
+<a href ="cucharon/create" class="btn5 btn-primary" style="height: 100%;">Ingresar registro</a>
+
+
+
     <div class="row">
 @foreach ($cucharons as $cucharons)
 <div class="col-sm">

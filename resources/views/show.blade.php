@@ -11,5 +11,6 @@ src="/images/{{$cucharons->entrada_cucharon}}" alt="">
     <a href="/cucharons/{{$cucharons->id}}/edit" class="btn btn-secondary">Editar</a>
    <a href="{{route('listado1.pdf')}}"class="btn btn-sm btn-secondary">
                 Descargar cucharones en pd
+
   </div>
 @endsection

@@ -38,6 +38,7 @@ Route::get("catalog/edit/id","CatalogController@CatalogEdit");
 Route::resource("/cucharon","CucharonController");
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('delete/{id}','CucharonController@destroy');
 
@@ -50,3 +51,9 @@ Route::resource("/mantenimiento","MantenimientoController");
 Route::get('delete/{id}','ReparacionController@destroy');
 Route::get('delete/{id}','MantenimientoController@destroy');
 Route::get('descargar-cucharones', 'CucharonController@pdf')->name('listado1.pdf');
+
+
+Route::resource('/search', 'Api\SearchController');
+Route::get('/searchh',['uses' => 'Api\SearchController@search','as' => 'search']);
+
+

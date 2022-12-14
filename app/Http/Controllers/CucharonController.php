@@ -92,8 +92,8 @@ class CucharonController extends Controller
     {
         //return view('edit',compact('cucharons'));
         //
-        $cucharons = Discount::find($id);
-        return view("editcucharon",compact("cucharons"));
+
+        return view("edit",compact("cucharons"));
     }
 
     /**
@@ -103,9 +103,20 @@ class CucharonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Trainer $traimers)
     {
         //
+        $cucharons->fill($request->except('fecha_entrega'));
+        if ($request->hasFile('fecha_entrega')){
+            $file= $request->file('fecha_entrega');
+            $name=time().$file-> getClientOriginalName();
+
+        //Imagen
+        $cucharons->fecha_entrega=$name;
+        $file->move(public_path(  ).'/images',$name);
+        }
+        $cucharons->save();
+        return redirect('cucharon/');
     }
 
     /**
@@ -116,32 +127,22 @@ class CucharonController extends Controller
      */
     public function destroy($id)
     {
-        $cucharons=Cucharon::find($id);
-        if ($cucharons->delete($id))
-        {
-            return redirect("cucharon/");
-            $data = Cuharon::FindOrFail($id);
-
-            if(file_exists("images/".$data->entrada_cucharon) AND !empty($data->entrada_cucharon))
-            {
-            unlink("images/".$data->entrada_cucharon);
-            }
-                try{
-                    $data->delete();
-                    $bug = 0;
-            }
-            catch(\Exception $e){
-                $bug = $e->errorInfo[1];
-            }
-            if($bug==0){
-                echo "success";
-            }else{
-                echo "error";
-            }
-
+        $data=Cucharon::FindOrFail($id);
+        if(file_exists('images/'.$data->entrada_cucharon)AND !empty($entrada_cucharon)){
+            unlink('images/'.$data->entrada_cucharon);
         }
-        else return "El ".$id. "No se pudo borrar";
+        try{
+            $data->delete();
+            $bug=0;
+        }
+        catch(\Exception $e){
+            $bug=$e->errorInfo[1];
+        }
+        if($bug==0){
+            echo"success";
+        }else{
+            echo'error';
+        }
     }
+
 }
-
-
