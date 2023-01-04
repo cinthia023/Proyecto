@@ -89,6 +89,18 @@ class MantenimientoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $mantenimientos = Mantenimiento::find($id);
+        $mantenimientos->fill($request->except('salida_cucharon'));
+        if ($request->hasFile('salida_cucharon')){
+            $file= $request->file('salida_cucharon');
+            $name=time().$file-> getClientOriginalName();
+
+        //Imagen
+        $mantenimientos->salida_cucharon=$name;
+        $file->move(public_path(  ).'/images/',$name);
+        }
+        $mantenimientos->save();
+        return redirect('mantenimiento/');
         //
     }
 

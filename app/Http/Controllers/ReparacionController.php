@@ -78,7 +78,7 @@ class ReparacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reparacion $reparacions)
+    public function edit( $id)
     {
         //return view('edit',compact('cucharons'));
         //
@@ -95,7 +95,21 @@ class ReparacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $reparacions = Reparacion::find($id);
+        $reparacions->fill($request->except('salida_cucharon'));
+        if ($request->hasFile('salida_cucharon')){
+            $file= $request->file('salida_cucharon');
+            $name=time().$file-> getClientOriginalName();
+
+        //Imagen
+        $reparacions->salida_cucharon=$name;
+        $file->move(public_path(  ).'/images/',$name);
+        }
+        $reparacions->save();
+        return redirect('reparacion/');
+
+
     }
 
     /**

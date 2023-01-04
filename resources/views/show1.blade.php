@@ -8,6 +8,6 @@ src="/images/{{$reparacions->salida_cucharon}}" alt="">
 <h5 class="text-center">{{$reparacions->name}}</h5>
 <div class="text-center">
     <a href="/delete/{{$reparacions->id}}" class="btn btn-primary">Delete</a>
-    <a href="/reparacions/{{$reparacions->id}}/edit" class="btn btn-secondary">Editar</a>
+    <a href="/reparacion/{{$reparacions->id}}/edit" class="btn btn-secondary">Editar</a>
   </div>
 @endsection

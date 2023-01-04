@@ -18,7 +18,7 @@ src="images/{{$mantenimientos->salida_cucharon}}" alt="">
 
 
 
-    <a href="/delete/{{$mantenimientos->id}}" class="btn btn-primary">Delete</a>
+
     <a href="/mantenimiento/{{$mantenimientos->id}}" class="btn btn-secondary">Mostrar</a>
   </div>
 </div>

@@ -35,6 +35,10 @@
                     <a href ="/mantenimiento" class="btn3 btn-primary" style="height: 100%;">Mantenimiento</a>
 
                     </dev>
+                    <div>
+                        <a href ="/search" class="btn3 btn-primary" style="height: 100%;">Buscar</a>
+
+                    </dev>
 
                 </div>
             </div>

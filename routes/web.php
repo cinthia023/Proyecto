@@ -48,12 +48,12 @@ Route::resource("/reparacion","ReparacionController");
 Route::resource("/mantenimiento","MantenimientoController");
 
 
-Route::get('delete/{id}','ReparacionController@destroy');
-Route::get('delete/{id}','MantenimientoController@destroy');
-Route::get('descargar-cucharones', 'CucharonController@pdf')->name('listado1.pdf');
-
+Route::get('delete1/{id}','ReparacionController@destroy');
+//Route::get('delete/{id}','MantenimientoController@destroy');
+// descargas
+Route::get('descargar-cucharones', 'CucharonController@pdf')->name('listado.pdf');
+Route::get("/pdf","CucharonController@pdf")->name("descargarpdf");
 
 Route::resource('/search', 'Api\SearchController');
 Route::get('/searchh',['uses' => 'Api\SearchController@search','as' => 'search']);
-
 

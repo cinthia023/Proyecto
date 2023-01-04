@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use PDF;
+
 use App\Cucharon;
+use PDF;
 
 
 class CucharonController extends Controller
@@ -22,12 +23,7 @@ class CucharonController extends Controller
         //
 
     }
-    public function pdf()
-    {
-        $cucharons=Cucharon::all();
-        $pdf =PDF::loadView('pdf.listado1',compact('cucharons'));
-        return $pdf->download('listado1.pdf');
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -88,11 +84,12 @@ class CucharonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cucharon $cucharons)
+    public function edit($id )
     {
         //return view('edit',compact('cucharons'));
         //
 
+        $cucharons = Cucharon::find($id);
         return view("edit",compact("cucharons"));
     }
 
@@ -103,20 +100,21 @@ class CucharonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trainer $traimers)
+    public function update(Request $request, $id)
     {
-        //
-        $cucharons->fill($request->except('fecha_entrega'));
-        if ($request->hasFile('fecha_entrega')){
-            $file= $request->file('fecha_entrega');
+        $cucharons = Cucharon::find($id);
+        $cucharons->fill($request->except('entrada_cucharon'));
+        if ($request->hasFile('entrada_cucharon')){
+            $file= $request->file('entrada_cucharon');
             $name=time().$file-> getClientOriginalName();
 
         //Imagen
-        $cucharons->fecha_entrega=$name;
-        $file->move(public_path(  ).'/images',$name);
+        $cucharons->entrada_cucharon=$name;
+        $file->move(public_path(  ).'/images/',$name);
         }
         $cucharons->save();
         return redirect('cucharon/');
+
     }
 
     /**
@@ -127,6 +125,10 @@ class CucharonController extends Controller
      */
     public function destroy($id)
     {
+        $cucharons = Cucharon::find($id);
+        if ($cucharons->delete($id))
+        {
+        return redirect("cucharon/");
         $data=Cucharon::FindOrFail($id);
         if(file_exists('images/'.$data->entrada_cucharon)AND !empty($entrada_cucharon)){
             unlink('images/'.$data->entrada_cucharon);
@@ -143,6 +145,13 @@ class CucharonController extends Controller
         }else{
             echo'error';
         }
+    }
+    }
+    public function pdf()
+    {
+        $cucharons = Cucharon::all();
+        $pdf = PDF::loadView("cucharons", compact("cucharons"));
+        return $pdf->download("M.pdf");
     }
 
 }
